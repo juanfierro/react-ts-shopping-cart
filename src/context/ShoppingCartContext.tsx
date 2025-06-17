@@ -47,14 +47,14 @@ export function ShoppingCartProvider({children} :
         return cartItems.find(item => item.id === id)?.quantity || 0
     }
 
-    function increaseCartQuantity(id: number){
+    function increaseCartQuantity(id: number, name: string = "") {
         setCartItems(currItems => {
-            if(currItems.find(item => item.id === id) == null){
-                return [...currItems, {id, quantity: 1}]
+            if (currItems.find(item => item.id === id) == null) {
+                return [...currItems, { id, name, quantity: 1 }]
             } else {
                 return currItems.map(item => {
-                    if(item.id === id){
-                        return {...item, quantity: item.quantity + 1}
+                    if (item.id === id) {
+                        return { ...item, quantity: item.quantity + 1 }
                     } else {
                         return item
                     }
